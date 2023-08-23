@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\User;
 
 class UserController extends Controller
 {
@@ -22,7 +23,7 @@ class UserController extends Controller
         $userId = $request->input('user_id');
 
         $userModel = new User;
-        $userModel->create($request);
+        $userModel->fill(['user_id' => $userId])->save();
         return $userId;
     }
 
