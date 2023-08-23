@@ -20,3 +20,5 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::post('/user', [UserController::class, 'store']);
+
+Route::post('/record', []);
