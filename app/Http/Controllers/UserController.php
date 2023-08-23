@@ -24,7 +24,6 @@ class UserController extends Controller
 
         $userModel = new User;
         $userModel->fill(['user_id' => $userId])->save();
-        return $userId;
     }
 
     /**
