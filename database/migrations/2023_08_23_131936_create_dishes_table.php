@@ -13,6 +13,9 @@ return new class extends Migration
     {
         Schema::create('dishes', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('record_id')->constrained();
+            $table->integer('amount');
+            $table->integer('calory');
             $table->timestamps();
         });
     }
