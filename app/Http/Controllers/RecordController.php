@@ -13,7 +13,7 @@ class RecordController extends Controller
     {
         $userId      = $request->input('user_id');
         $storeName   = $request->input('store_name');
-        $totalCarory = $request->input('total_carory');
+        $totalCalory = $request->input('total_calory');
         $dishes      = $request->input('dishes'); // array
 
         DB::beginTransaction();
@@ -23,7 +23,7 @@ class RecordController extends Controller
             $record->fill([
                     'user_id'      => $userId,
                     'store_name'   => $storeName,
-                    'total_calory' => $totalCarory,
+                    'total_calory' => $totalCalory,
             ]);
             $record->save();
 
