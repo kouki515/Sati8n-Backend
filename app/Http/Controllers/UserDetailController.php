@@ -41,4 +41,14 @@ class UserDetailController extends Controller
             return $e->getMessage();
         }
     }
+
+    public function show($userId) {
+        $userDetail = UserDetails::find($userId);
+
+        if (!$userDetail) {
+            return response()->json(['message' => 'User not found'], 404);
+        }
+
+        return new JsonResponse($userDetail);
+    }
 }
