@@ -22,12 +22,14 @@ class RecordController extends Controller
             $userId      = $request->input('user_id');
             $storeName   = $request->input('store_name');
             $totalCalory = $request->input('total_carory');
+            $mealType    = $request->input('meal_type');
             $dishes      = $request->input('dishes'); // array
             $record = new Record();
             $record->fill([
                     'user_id'      => $userId,
                     'store_name'   => $storeName,
                     'total_calory' => $totalCalory,
+                    'meal_type'    => $mealType,
             ]);
             $record->save();
 
