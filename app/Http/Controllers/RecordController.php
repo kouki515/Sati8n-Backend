@@ -26,14 +26,14 @@ class RecordController extends Controller
             ]);
             $record->save();
 
-            // foreach ($dishes as $dish) {
-            //     $dish = new Dish([
-            //         'record_id' => $record->id,
-            //         'amount'    => $dish['amount'],
-            //         'calory'    => $dish['calory'],
-            //     ]);
-            //     $dish->save();
-            // }
+            foreach ($dishes as $dish) {
+                $dish = new Dish([
+                    'record_id' => $record->id,
+                    'amount'    => $dish['amount'],
+                    'calory'    => $dish['calory'],
+                ]);
+                $dish->save();
+            }
 
             DB::commit();
 
