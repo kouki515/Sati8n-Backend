@@ -29,6 +29,9 @@ class UserDetailController extends Controller
                 'age'     => $age,
                 'bio'     => $bio,
             ])->save();
+
+            DB::commit();
+
             return 'success';
         } catch (\Exception $e) {
             DB::rollBack();
