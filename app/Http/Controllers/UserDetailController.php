@@ -16,18 +16,20 @@ class UserDetailController extends Controller
         $sex    = $request->input('sex');
         $age    = $request->input('age');
         $bio    = $request->input('bio');
+        $userName    = $request->input('user_name');
 
         DB::beginTransaction();
 
         try {
             $userDetail = new UserDetails();
             $userDetail->fill([
-                'user_id' => $userId,
-                'height'  => $height,
-                'weight'  => $weight,
-                'sex'     => $sex,
-                'age'     => $age,
-                'bio'     => $bio,
+                'user_id'  => $userId,
+                'height'   => $height,
+                'weight'   => $weight,
+                'sex'      => $sex,
+                'age'      => $age,
+                'bio'      => $bio,
+                'userName' => $userName,
             ])->save();
 
             DB::commit();
