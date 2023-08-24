@@ -9,7 +9,7 @@ class Dish extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['record_id', 'amount', 'calory'];
+    protected $fillable = ['record_id', 'amount', 'calory', 'dish_name'];
 
     public function record() {
         return $this->belongsTo(Record::class);
