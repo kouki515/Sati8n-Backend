@@ -34,6 +34,7 @@ class RecordController extends Controller
                     'record_id' => $record->id,
                     'amount'    => $dish['amount'],
                     'calory'    => $dish['calory'],
+                    'dish_name' => $dish['dish_name'],
                 ]);
                 $dish->save();
             }
