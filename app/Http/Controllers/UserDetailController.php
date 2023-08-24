@@ -21,7 +21,7 @@ class UserDetailController extends Controller
         DB::beginTransaction();
 
         try {
-            $userDetail = new UserDetails();
+            $userDetail = UserDetails::where('user_id', $userId);
             $userDetail->fill([
                 'user_id'   => $userId,
                 'height'    => $height,
