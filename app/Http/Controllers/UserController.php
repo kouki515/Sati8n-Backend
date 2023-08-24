@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User;
+use App\Models\UserDetails;
+use Illuminate\Support\Facades\DB;
 
 class UserController extends Controller
 {
@@ -20,10 +22,34 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        $userId = $request->input('user_id');
+        DB::beginTransaction();
 
-        $userModel = new User;
-        $userModel->fill(['user_id' => $userId])->save();
+        try {
+            $user = new User;
+            $userId = $request->input('user_id');
+            $user->fill(['user_id' => $userId]);
+            $user->save();
+
+            $userDetail = new UserDetails();
+            $userName = 'gest_' . random_int(10000000, 99999999);
+            $userDetail->fill([
+                'user_id'   => $userId,
+                'user_name' => $userName,
+                'height'    => NULL,
+                'weight'    => NULL,
+                'sex'       => NULL,
+                'age'       => NULL,
+                'bio'       => NULL,
+            ]);
+            $userDetail->save();
+
+            DB::commit();
+
+            return response()->json(['message' => 'User and User Detal created successfully'], 201);
+        } catch (\Exception $e) {
+            DB::rollBack();
+            return response()->json(['message' => $e->getMessage()], 500);
+        }
     }
 
     /**
