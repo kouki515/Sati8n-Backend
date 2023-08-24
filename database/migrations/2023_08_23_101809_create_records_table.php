@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('user_id');
             $table->foreign('user_id')->references('user_id')->on('users');
             $table->string('store_name');
-            $table->string('total_calory');
+            $table->integer('total_calory');
             $table->timestamps();
         });
     }
