@@ -11,14 +11,13 @@ class RecordController extends Controller
 {
     public function store(Request $request)
     {
-        $userId      = $request->input('user_id');
-        $storeName   = $request->input('store_name');
-        $totalCarory = $request->input('total_carory');
-        $dishes      = $request->input('dishes'); // array
-
         DB::beginTransaction();
 
         try {
+            $userId      = $request->input('user_id');
+            $storeName   = $request->input('store_name');
+            $totalCarory = $request->input('total_carory');
+            $dishes      = $request->input('dishes'); // array
             $record = new Record();
             $record->fill([
                     'user_id'      => $userId,
@@ -27,14 +26,14 @@ class RecordController extends Controller
             ]);
             $record->save();
 
-            foreach ($dishes as $dish) {
-                $dish = new Dish([
-                    'record_id' => $record->id,
-                    'amount'    => $dish['amount'],
-                    'calory'    => $dish['calory'],
-                ]);
-                $dish->save();
-            }
+            // foreach ($dishes as $dish) {
+            //     $dish = new Dish([
+            //         'record_id' => $record->id,
+            //         'amount'    => $dish['amount'],
+            //         'calory'    => $dish['calory'],
+            //     ]);
+            //     $dish->save();
+            // }
 
             DB::commit();
 
