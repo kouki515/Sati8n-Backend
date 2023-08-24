@@ -32,7 +32,6 @@ class RecordController extends Controller
                     'amount'    => $dish['amount'],
                     'calory'    => $dish['calory'],
                 ]);
-                return [$record->id, $dish['amount'], $dish['calory']];
                 $dish->save();
             }
 
@@ -42,7 +41,8 @@ class RecordController extends Controller
         } catch (\Exception $e) {
             DB::rollBack();
 
-            return $e->getMessage();
+            echo $e->getMessage();
+            exit();
         }
     }
 
