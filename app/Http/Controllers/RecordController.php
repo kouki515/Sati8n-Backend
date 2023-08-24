@@ -37,12 +37,12 @@ class RecordController extends Controller
 
             DB::commit();
 
-            return response()->json(['message' => 'Record created successfully'], 201);;
+            return response()->json(['message' => 'Record created successfully'], 201);
         } catch (\Exception $e) {
             DB::rollBack();
 
-            echo $e->getMessage();
-            exit();
+            Log::error($e->getMessage());
+            return response()->json(['message' => $e->getMessage()], 404);
         }
     }
 
