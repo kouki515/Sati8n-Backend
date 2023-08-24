@@ -41,8 +41,7 @@ class RecordController extends Controller
         } catch (\Exception $e) {
             DB::rollBack();
 
-            Log::error($e->getMessage());
-            return response()->json(['message' => $e->getMessage()], 404);
+            return response()->json(['message' => 'server error'], 500);
         }
     }
 
