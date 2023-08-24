@@ -19,6 +19,10 @@ class RecordController extends Controller
         DB::beginTransaction();
 
         try {
+            $userId      = $request->input('user_id');
+            $storeName   = $request->input('store_name');
+            $totalCarory = $request->input('total_carory');
+            $dishes      = $request->input('dishes'); // array
             $record = new Record();
             $record->fill([
                     'user_id'      => $userId,
@@ -38,11 +42,11 @@ class RecordController extends Controller
 
             DB::commit();
 
-            return response()->json(['message' => 'Record created successfully'], 201);;
+            return response()->json(['message' => 'Record created successfully'], 201);
         } catch (\Exception $e) {
             DB::rollBack();
 
-            return $e->getMessage();
+            return response()->json(['message' => 'server error'], 500);
         }
     }
 

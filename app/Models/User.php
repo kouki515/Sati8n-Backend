@@ -37,4 +37,8 @@ class User extends Authenticatable
 
     // プライマリーキーの変更
     protected $primaryKey = 'user_id';
+
+    public function user_detail() {
+        return $this->hasOne(UserDetails::class);
+    }
 }
