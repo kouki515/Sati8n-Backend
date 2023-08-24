@@ -27,3 +27,4 @@ Route::post('/user/profile', [UserDetailController::class, 'store']);
 Route::get('user/profile', [UserDetailController::class, 'show']);
 
 Route::post('/record', [RecordController::class, 'store']);
+Route::get('/record', [RecordController::class, 'show']);

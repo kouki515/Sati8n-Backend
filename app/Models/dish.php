@@ -12,6 +12,6 @@ class Dish extends Model
     protected $fillable = ['record_id', 'amount', 'calory'];
 
     public function record() {
-        return $this->belongsTo('App\Record');
+        return $this->belongsTo(Record::class);
     }
 }
