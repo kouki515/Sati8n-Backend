@@ -11,11 +11,6 @@ class RecordController extends Controller
 {
     public function store(Request $request)
     {
-        $userId      = $request->input('user_id');
-        $storeName   = $request->input('store_name');
-        $totalCalory = $request->input('total_calory');
-        $dishes      = $request->input('dishes'); // array
-
         DB::beginTransaction();
 
         try {
@@ -24,6 +19,7 @@ class RecordController extends Controller
             $totalCalory = $request->input('total_carory');
             $mealType    = $request->input('meal_type');
             $dishes      = $request->input('dishes'); // array
+
             $record = new Record();
             $record->fill([
                     'user_id'      => $userId,
