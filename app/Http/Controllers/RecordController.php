@@ -33,6 +33,7 @@ class RecordController extends Controller
                     'calory'    => $dish['calory'],
                 ]);
                 $dish->save();
+                return [$record->id, $dish['amount'], $dish['calory']];
             }
 
             DB::commit();
