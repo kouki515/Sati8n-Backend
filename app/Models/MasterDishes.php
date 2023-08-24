@@ -8,4 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class MasterDishes extends Model
 {
     use HasFactory;
+
+    public function master_store() {
+        return $this->belongsTo(MasterStore::class);
+    }
 }
