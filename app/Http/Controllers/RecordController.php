@@ -21,7 +21,7 @@ class RecordController extends Controller
         try {
             $userId      = $request->input('user_id');
             $storeName   = $request->input('store_name');
-            $totalCarory = $request->input('total_carory');
+            $totalCalory = $request->input('total_carory');
             $dishes      = $request->input('dishes'); // array
             $record = new Record();
             $record->fill([
