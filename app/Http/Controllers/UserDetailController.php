@@ -30,7 +30,7 @@ class UserDetailController extends Controller
                 'age'       => $age,
                 'bio'       => $bio,
                 'user_name' => $userName,
-            ])->save();
+            ])->update();
 
             DB::commit();
 
