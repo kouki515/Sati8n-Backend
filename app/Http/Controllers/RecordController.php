@@ -45,4 +45,15 @@ class RecordController extends Controller
             return $e->getMessage();
         }
     }
+
+    public function show(Request $request) {
+        $userId = $request->user_id;
+        $records = Record::where('user_id', $userId)->with('dishes')->get();
+
+        if (!$records) {
+            return response()->json(['message' => 'No record was found for the specified user ID'], 404);
+        }
+
+        return $records;
+    }
 }

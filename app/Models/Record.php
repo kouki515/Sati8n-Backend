@@ -12,6 +12,6 @@ class Record extends Model
     protected $fillable = ['user_id', 'store_name', 'total_calory'];
 
     public function dishes() {
-        return $this->hasMany('App\Dishes');
+        return $this->hasMany(Dish::class);
     }
 }
