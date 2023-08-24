@@ -42,7 +42,8 @@ class UserDetailController extends Controller
         }
     }
 
-    public function show($userId) {
+    public function show(Request $request) {
+        $userId = $request->user_id;
         $userDetail = UserDetails::find($userId);
 
         if (!$userDetail) {
