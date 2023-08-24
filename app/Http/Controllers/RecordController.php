@@ -25,15 +25,20 @@ class RecordController extends Controller
                     'store_name'   => $storeName,
                     'total_calory' => $totalCarory,
             ]);
+            $record->save();
 
             foreach ($dishes as $dish) {
-                $dishModel = new Dish($dish);
-                $record->children()->save($dish);
+                $dish = new Dish([
+                    'record_id' => $record->id,
+                    'amount'    => $dish['amount'],
+                    'calory'    => $dish['calory'],
+                ]);
+                $dish->save();
             }
 
             DB::commit();
 
-            return true;
+            return response()->json(['message' => 'Record created successfully'], 201);;
         } catch (\Exception $e) {
             DB::rollBack();
 
