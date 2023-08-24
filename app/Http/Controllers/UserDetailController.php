@@ -44,12 +44,12 @@ class UserDetailController extends Controller
 
     public function show(Request $request) {
         $userId = $request->user_id;
-        $userDetail = UserDetails::find($userId);
+        $userDetail = UserDetails::where('user_id', $userId)->first();
 
         if (!$userDetail) {
             return response()->json(['message' => 'User not found'], 404);
         }
 
-        return new JsonResponse($userDetail);
+        return $userDetail;
     }
 }
