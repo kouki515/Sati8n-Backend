@@ -28,3 +28,5 @@ Route::get('user/profile', [UserDetailController::class, 'show']);
 
 Route::post('/record', [RecordController::class, 'store']);
 Route::get('/record', [RecordController::class, 'show']);
+
+Route::get('/record/time', [RecordController::class, 'showWithTime']);

@@ -59,4 +59,21 @@ class RecordController extends Controller
 
         return $records;
     }
+
+    public function showWithTime(Request $request) {
+        $userId = $request->user_id;
+        $start  = $request->start;
+        $end    = $request->end;
+
+        $records = Record::where('user_id', $userId)
+            ->whereBetween('created_at', [$start, $end])
+            ->with('dishes')
+            ->get();
+
+        if (!$records) {
+            return response()->json(['message' => 'No record was found for the specified user ID and datetime'], 404);
+        }
+
+        return $records;
+    }
 }
