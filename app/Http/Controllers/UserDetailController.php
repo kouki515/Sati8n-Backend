@@ -10,26 +10,26 @@ class UserDetailController extends Controller
 {
     public function store(Request $request)
     {
-        $userId = $request->input('user_id');
-        $height = $request->input('height');
-        $weight = $request->input('weight');
-        $sex    = $request->input('sex');
-        $age    = $request->input('age');
-        $bio    = $request->input('bio');
-        $userName    = $request->input('user_name');
+        $userId   = $request->input('user_id');
+        $height   = $request->input('height');
+        $weight   = $request->input('weight');
+        $sex      = $request->input('sex');
+        $age      = $request->input('age');
+        $bio      = $request->input('bio');
+        $userName = $request->input('user_name');
 
         DB::beginTransaction();
 
         try {
             $userDetail = new UserDetails();
             $userDetail->fill([
-                'user_id'  => $userId,
-                'height'   => $height,
-                'weight'   => $weight,
-                'sex'      => $sex,
-                'age'      => $age,
-                'bio'      => $bio,
-                'userName' => $userName,
+                'user_id'   => $userId,
+                'height'    => $height,
+                'weight'    => $weight,
+                'sex'       => $sex,
+                'age'       => $age,
+                'bio'       => $bio,
+                'user_name' => $userName,
             ])->save();
 
             DB::commit();
