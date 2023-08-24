@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\RecordController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\UserDetailController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -21,5 +22,6 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::post('/user', [UserController::class, 'store']);
+Route::post('/user/profile', [UserDetailController::class, 'store']);
 
 Route::post('/record', [RecordController::class, 'store']);
