@@ -22,15 +22,14 @@ class UserDetailController extends Controller
 
         try {
             $userDetail = UserDetails::where('user_id', $userId);
-            $userDetail->fill([
-                'user_id'   => $userId,
+            $userDetail->update([
                 'height'    => $height,
                 'weight'    => $weight,
                 'sex'       => $sex,
                 'age'       => $age,
                 'bio'       => $bio,
                 'user_name' => $userName,
-            ])->update();
+            ]);
 
             DB::commit();
 
